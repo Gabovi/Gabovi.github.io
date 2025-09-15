@@ -17,7 +17,7 @@ btnSearch.addEventListener("click",searchLocation);
     .then(data => {
       let results = [];
 
-      // 1️⃣ Search countries
+
       data.countries.forEach(country => {
         if (country.name.toLowerCase().includes(input)) {
           results.push({
@@ -27,7 +27,7 @@ btnSearch.addEventListener("click",searchLocation);
           });
         }
 
-        // 2️⃣ Search cities inside each country
+
         country.cities.forEach(city => {
           if (
             city.name.toLowerCase().includes(input) ||
@@ -38,29 +38,26 @@ btnSearch.addEventListener("click",searchLocation);
         });
       });
 
-      // 3️⃣ Search temples
       data.temples.forEach(temple => {
         if (
           temple.name.toLowerCase().includes(input) ||
           temple.description.toLowerCase().includes(input) ||
-          input.includes("temple") // catch general "temple" search
+          input.includes("temple")
         ) {
           results.push(temple);
         }
       });
 
-      // 4️⃣ Search beaches
       data.beaches.forEach(beach => {
         if (
           beach.name.toLowerCase().includes(input) ||
           beach.description.toLowerCase().includes(input) ||
-          input.includes("beach") // catch general "beach" search
+          input.includes("beach")
         ) {
           results.push(beach);
         }
       });
 
-      // 5️⃣ Display results
       if (results.length > 0) {
         results.forEach(item => {
           const div = document.createElement('div');
